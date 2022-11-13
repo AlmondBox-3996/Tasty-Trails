@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="html2">
+
+<head>
+    <title>Tasty Trails</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS_Styling.css">
+    <style type="text/css">
+        /* Set the size of the div element 
+        that contains the map */
+        #map {
+            height: 700px;
+            width: 1900px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar bar-block card top xlarge animate-left" style="display:none;z-index:2;width:40%;min-width:300px"
+        id="mySidebar">
+        <a href="javascript:void(0)" onclick="w3_close()" class="bar-item button">☰
+            <a href="#food" onclick="w3_close()" class="bar-item button">Tasty Trails</a>
+            <a href="#about" onclick="w3_close()" class="bar-item button">About</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="display-container content wide" style="max-width:1600px;min-width:500px" id="food">
+        <img class="image" src="food.jpg" alt="food" width="1600" height="300">
+        <div class="display-bottomleft padding-large">
+            <h1 style="color:white;font-size:50px">Tasty Trails</h1>
+        </div>
+    </header>
+
+    <!-- Navbar (sit on top) -->
+    <div class="top">
+        <div class="bar center white padding card" style="letter-spacing:4px;">
+            <img align="left" src="Images\LOGO.png" alt="LOGO" style="width:4%">
+            <a href="TastyTrails.html" class="bar-item xlarge left button">Home</a>
+            <a href="Restraunts.html" class="bar-item xlarge button left">Restaurants</a>
+            <a href="#home" class="bar-item xlarge left button">Favourites</a>
+            <!-- Right-sided navbar links. Hide them on small screens -->
+            <div class="right hide-small">
+                <a href="Login.html" class="bar-item xlarge button">Login</a>
+                <a href="Register.html" class="bar-item xlarge button">Sign-Up</a>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!--Add a script by google -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAApcSd_nMIi6tuXVWw41mCCGQn5UiBdTU&callback=initMap&libraries=&v=weekly"
+        async>
+        </script>
+
+    <script>
+
+        // Initialize and add the map
+        function initMap() {
+
+            // The location of Geeksforgeeks office
+            const gfg_office = {
+                lat: 28.50231,
+                lng: 77.40548
+            };
+
+            // Create the map, centered at gfg_office
+            const map = new google.maps.Map(
+                document.getElementById("map"), {
+
+                // Set the zoom of the map
+                zoom: 17.56,
+                center: gfg_office,
+            });
+        }
+    </script>
+    <style>
+        #search_input {
+            font-size: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+            margin-top: 50px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .form-group input:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                <h2>Tasty Trails Restaurant Finder</h2>
+                </p>
+                <!-- Autocomplete location search input -->
+                <div class="form-group">
+                    <label>Location:</label>
+                    <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var searchInput = 'search_input';
+
+        $(document).ready(function () {
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                types: ['geocode'],
+                /*componentRestrictions: {
+                 country: "USA"
+                }*/
+            });
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var near_place = autocomplete.getPlace();
+            });
+        });
+    </script>
+    <footer class="padding-5">
+    <div class="third">
+    <img src="Images/food5.png" alt="logo" style="width:300%" height="770">
+    </div>
+    <div class="third center">
+      <img src="Images/LOGO.png" alt="logo" style="width:75%" height="75%">
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    
+    <div class="third right serif">
+      <div>
+          <h2 style="font-family:'Times New Roman', Times, serif">Find the best restaurants, deals, discounts</h2>
+          <h2 style="font-family:'Times New Roman', Times, serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and offers</h2>
+          <br/>
+          <h3 style="font-family:'Times New Roman', Times, serif">Phone number : +91 9372243045</h3>
+          <h3 style="font-family:'Times New Roman', Times, serif">Email address : tastytrails@gmail.com</h3>
+      </div>
+      <h2 style="font-family:'Times New Roman', Times, serif">To Learn more about us, visit us on</h3>
+      <p>
+        <div class="padding-16 center" id="food">
+        <button href="https://www.instagram.com" class="abutton ibutton">
+          <img src="Images\Instagram.png" style="width:100%">
+        </button>
+        <button href="https://www.facebook.com" class="abutton ibutton">
+          <img src="Images\Facebook.png" style="width:100%">
+        </button>
+        <button href="https://www.twitter.com" class="abutton ibutton">
+         <img src="Images\Twitter.png" style="width:100%">
+        </button>
+        <button href="https://www.youtube.com" class="abutton ibutton">
+          <img src="Images\Youtube.png" style="width:100%">
+        </button>
+      </div>
+        
+
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>
